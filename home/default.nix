@@ -6,7 +6,7 @@
     ./programs/zsh.nix
     ./programs/hyprland.nix
     ./programs/kitty.nix
-    ./programs/thefetchapp.nix
+    ./programs/pfetch.nix
   ];
 
   # User informations
