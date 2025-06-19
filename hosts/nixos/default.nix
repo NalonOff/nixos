@@ -35,6 +35,9 @@
       options = "--delete-older-than 7d";
     };
   };
+
+  boot.kernelParams = [ "rtw_8821ce.fwctrl_lps=0" "rtw_8821ce.swlps=0" ];
+  hardware.enableAllFirmware = true;
   
   # Logiciels propriétaires
   nixpkgs.config.allowUnfree = true;

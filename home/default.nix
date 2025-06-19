@@ -6,6 +6,7 @@
     ./programs/zsh.nix
     ./programs/hyprland.nix
     ./programs/kitty.nix
+    ./programs/thefetchapp.nix
   ];
 
   # User informations
@@ -26,6 +27,12 @@
     fzf
     jq
     
+    # Apps
+    chromium
+
+    # Ricing
+    starship
+
     # Network tools
     wget
     curl
@@ -42,7 +49,7 @@
   
   # Environment variables
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "neovim";
     PAGER = "less";
   };
   
