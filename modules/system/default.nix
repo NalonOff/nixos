@@ -57,6 +57,16 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
+
   #systemd.user.startServices = true;
   #services.dbus.enable = true;
 }

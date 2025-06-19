@@ -7,7 +7,7 @@
     ../../modules/networking
     ../../modules/users
     ../../modules/system
-   # ../../modules/fonts
+    ../../modules/fonts
   ]; 
 
   # Version du système

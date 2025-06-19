@@ -16,7 +16,9 @@
       
       # Icon fonts
       font-awesome
-      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      #(nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     ];
     
     fontconfig = {

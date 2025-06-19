@@ -5,6 +5,7 @@
     ./programs/git.nix
     ./programs/zsh.nix
     ./programs/hyprland.nix
+    ./programs/kitty.nix
   ];
 
   # User informations
@@ -34,7 +35,7 @@
     python3
     
     # Other tools
-    neofetch
+    pfetch
     btop
     du-dust
   ];

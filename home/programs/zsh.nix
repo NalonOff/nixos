@@ -25,6 +25,6 @@
     };
     
     # Prompt configuration
-    initContent = "Welcome to zsh Nalon !";
+    initContent = "pfetch";
    };
 }
