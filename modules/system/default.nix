@@ -28,7 +28,7 @@
   
   # System environment variables
   environment.variables = {
-    EDITOR = "vim";
+    EDITOR = "neovim";
   };
   
   # Essential services
