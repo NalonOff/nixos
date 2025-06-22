@@ -8,7 +8,8 @@
     ./programs/kitty.nix
     ./programs/pfetch.nix
     ./programs/mozilla.nix
-  ];
+    ./programs/ags.nix
+    ];
 
   # User informations
   home = {

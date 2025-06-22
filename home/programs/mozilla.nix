@@ -50,6 +50,7 @@
         "browser.toolbars.bookmarks.visibility" = "always";
         
         "ui.systemUsesDarkTheme" = 1;
+	"toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
         # Confidentialité
         "privacy.trackingprotection.enabled" = true;
@@ -82,7 +83,15 @@
         # Performance
         "gfx.webrender.all" = true;
         "media.ffmpeg.vaapi.enabled" = true;
-      }; 
+      };
+
+      userChrome = ''
+        #sidebar-box {
+        min-width: 200px !important;
+        max-width: 300px !important;
+        width: 250px !important;
+        }
+      '';
      
       # Signets utiles
       bookmarks = [
