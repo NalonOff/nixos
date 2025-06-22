@@ -105,7 +105,7 @@
         "$mod, M, exit,"
         # "$mod, E, exec, thunar"
         "$mod, V, togglefloating,"
-        # "$mod, R, exec, rofi -show drun"
+        "$mod, R, exec, rofi -show drun"
         # "$mod, P, pseudo,"
         # "$mod, J, togglesplit,"
 
