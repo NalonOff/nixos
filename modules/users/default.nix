@@ -4,7 +4,7 @@
   # Main user
   users.users.nalon = {
     isNormalUser = true;
-    description = "Utilisateur principal";
+    description = "Main user";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };

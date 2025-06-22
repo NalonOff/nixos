@@ -49,6 +49,8 @@
         "browser.tabs.tabmanager.enabled" = true;
         "browser.toolbars.bookmarks.visibility" = "always";
         
+        "ui.systemUsesDarkTheme" = 1;
+
         # Confidentialité
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
@@ -80,24 +82,8 @@
         # Performance
         "gfx.webrender.all" = true;
         "media.ffmpeg.vaapi.enabled" = true;
-      };
-      
-      # CSS minimal (plus besoin de masquer les onglets)
-      userChrome = ''
-        /* Ajustements optionnels pour la sidebar native */
-        #sidebar-box {
-          min-width: 200px !important;
-        }
-      '';
-      
-      # Extensions recommandées (Tree Style Tab plus nécessaire)
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        privacy-badger
-        clearurls
-        decentraleyes
-      ];
-      
+      }; 
+     
       # Signets utiles
       bookmarks = [
         {
@@ -115,10 +101,6 @@
             {
               name = "Nix Packages";
               url = "https://search.nixos.org/packages";
-            }
-            {
-              name = "NixOS Options";
-              url = "https://search.nixos.org/options";
             }
           ];
         }

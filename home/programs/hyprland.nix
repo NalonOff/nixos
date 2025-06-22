@@ -4,6 +4,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+    input = {
+      kb_layout = "fr";
+    };
+
       # Variables d'environnement
       env = [
         "XCURSOR_SIZE,24"

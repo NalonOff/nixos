@@ -21,6 +21,7 @@
     pciutils
     usbutils
     lshw
+    brightnessctl
     
     # IDE
     neovim
