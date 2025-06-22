@@ -7,6 +7,7 @@
     ./programs/hyprland.nix
     ./programs/kitty.nix
     ./programs/pfetch.nix
+    ./programs/mozilla.nix
   ];
 
   # User informations
