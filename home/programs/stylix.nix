@@ -61,6 +61,7 @@
       firefox = {
         enable = true;
 	profileNames = [ "default" ];
+      };
       
       # Gestionnaires de fenêtres
       hyprland.enable = true;
