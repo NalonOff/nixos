@@ -37,7 +37,7 @@
               };
               # Ajouter le module Stylix à Home Manager
               sharedModules = [
-                stylix.homeManagerModules.stylix
+                stylix.homeModules.stylix
               ];
             };
           }
@@ -49,7 +49,7 @@
         modules = [
           ./home
           # Ajouter le module Stylix
-          stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
         ];
         extraSpecialArgs = {
           inherit inputs;

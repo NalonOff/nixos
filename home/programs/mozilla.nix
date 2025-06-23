@@ -12,17 +12,17 @@
       
       # Configuration des moteurs de recherche
       search = {
-        default = "DuckDuckGo";
+        default = "ddg";
         engines = {
           "DuckDuckGo" = {
             urls = [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
-            iconUpdateURL = "https://duckduckgo.com/favicon.ico";
+            icon = "https://duckduckgo.com/favicon.ico";
             definedAliases = [ "@ddg" ];
           };
           
           "Startpage" = {
             urls = [{ template = "https://www.startpage.com/sp/search?query={searchTerms}"; }];
-            iconUpdateURL = "https://www.startpage.com/sp/cdn/favicons/favicon-96x96.png";
+            icon = "https://www.startpage.com/sp/cdn/favicons/favicon-96x96.png";
             definedAliases = [ "@sp" ];
           };
           
@@ -92,28 +92,6 @@
         width: 250px !important;
         }
       '';
-     
-      # Signets utiles
-      bookmarks = [
-        {
-          name = "Nix Ecosystem";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "NixOS";
-              url = "https://nixos.org/";
-            }
-            {
-              name = "Home Manager Options";
-              url = "https://nix-community.github.io/home-manager/options.html";
-            }
-            {
-              name = "Nix Packages";
-              url = "https://search.nixos.org/packages";
-            }
-          ];
-        }
-      ];
     };
   };
 }
