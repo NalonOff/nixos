@@ -8,39 +8,52 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    # Ajout de Stylix
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-	config.allowUnfree = true;
+        config.allowUnfree = true;
       };
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = system;
-	modules = [
-	  ./hosts/nixos
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager = {
-	      useGlobalPkgs = true;
-	      useUserPackages = true;
-	      users.nalon = import ./home;
+        inherit system;
+        modules = [
+          ./hosts/nixos
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.nalon = import ./home;
+              # Passer Stylix à Home Manager
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              # Ajouter le module Stylix à Home Manager
+              sharedModules = [
+                stylix.homeManagerModules.stylix
+              ];
             };
-	  }
-	];
+          }
+        ];
       };
 
       homeConfigurations.nalon = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-	modules = [
-	  ./home
+        modules = [
+          ./home
+          # Ajouter le module Stylix
+          stylix.homeManagerModules.stylix
         ];
-	extraSpecialArgs = {
-	  inherit inputs;
-	};
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     };
 }

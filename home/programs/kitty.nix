@@ -13,8 +13,6 @@
       cursor_shape = "beam";
       cursor_blink_interval = 0;
 
-      background_opacity = "0.8";
-
       # Scrollback
       scrollback_lines = 10000;
     };

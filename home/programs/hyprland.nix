@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-    input = {
-      kb_layout = "fr";
-    };
+      input = {
+        kb_layout = "fr";
+      };
 
       # Variables d'environnement
       env = [
@@ -33,8 +33,7 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        # Couleurs gérées par Stylix - supprimées
         layout = "dwindle";
         allow_tearing = false;
       };

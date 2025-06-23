@@ -8,7 +8,7 @@
     ./programs/kitty.nix
     ./programs/pfetch.nix
     ./programs/mozilla.nix
-    ./programs/ags.nix
+    ./programs/stylix.nix
     ];
 
   # User informations
