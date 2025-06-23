@@ -9,8 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    # Ajout de Stylix
-    stylix.url = "github:danth/stylix";
+    # Stylix with aligned inputs
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
@@ -31,13 +35,13 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.nalon = import ./home;
-              # Passer Stylix à Home Manager
+              # Pass Stylix to Home Manager
               extraSpecialArgs = {
                 inherit inputs;
               };
-              # Ajouter le module Stylix à Home Manager
+              # Add Stylix module to Home Manager
               sharedModules = [
-                stylix.homeModules.stylix
+                stylix.homeManagerModules.stylix
               ];
             };
           }
@@ -48,8 +52,8 @@
         inherit pkgs;
         modules = [
           ./home
-          # Ajouter le module Stylix
-          stylix.homeModules.stylix
+          # Add Stylix module
+          stylix.homeManagerModules.stylix
         ];
         extraSpecialArgs = {
           inherit inputs;

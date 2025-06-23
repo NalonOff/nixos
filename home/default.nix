@@ -31,6 +31,7 @@
     
     # Apps
     rofi
+    nautilus
 
     # Ricing
     starship
