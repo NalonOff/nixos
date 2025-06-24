@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = [ pkgs.hellwal ];
+  home.packages = with pkgs; [
+    hellwal
+    swww
+  ];
 }
 

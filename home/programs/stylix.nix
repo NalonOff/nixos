@@ -1,6 +1,27 @@
 { config, pkgs, ... }:
-
-{
+let
+  raw = builtins.fromJSON (builtins.readFile /home/nalon/colors.json);
+  base16 = {
+    scheme = raw.scheme or "custom";
+    author = "converted";
+    base00 = raw.special.background;
+    base01 = raw.colors.color0;
+    base02 = raw.colors.color1;
+    base03 = raw.colors.color2;
+    base04 = raw.colors.color4;
+    base05 = raw.special.foreground;
+    base06 = raw.colors.color7;
+    base07 = raw.colors.color15;
+    base08 = raw.colors.color1;
+    base09 = raw.colors.color9;
+    base0A = raw.colors.color3;
+    base0B = raw.colors.color2;
+    base0C = raw.colors.color6;
+    base0D = raw.colors.color4;
+    base0E = raw.colors.color5;
+    base0F = raw.colors.color8;
+  };
+in {
   # Configuration complète de Stylix
   # Le module est importé via flake.nix, donc pas besoin d'imports ici
   stylix = {
@@ -8,10 +29,10 @@
     enable = true;
 
     # Image de fond (wallpaper) - Stylix génèrera automatiquement les couleurs
-    image = /home/nalon/.cache/current-wallpaper.jpg;  # Mettez votre image dans le dossier home/
+    # image = /home/nalon/.cache/current-wallpaper;  # Mettez votre image dans le dossier home/
 
     # Ou utiliser un schéma de couleurs prédéfini :
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    base16Scheme = base16;
 
     # Configuration des polices
     fonts = {
@@ -64,7 +85,7 @@
       };
       
       # Gestionnaires de fenêtres
-      hyprland.enable = false;
+      hyprland.enable = true;
       
       # Autres
       rofi.enable = true;
