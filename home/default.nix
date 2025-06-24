@@ -9,6 +9,7 @@
     ./programs/pfetch.nix
     ./programs/mozilla.nix
     ./programs/stylix.nix
+    ./programs/discord.nix
     ];
 
   # User informations

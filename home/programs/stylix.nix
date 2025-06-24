@@ -8,7 +8,7 @@
     enable = true;
 
     # Image de fond (wallpaper) - Stylix génèrera automatiquement les couleurs
-    image = /home/nalon/Downloads/wall.jpg;  # Mettez votre image dans le dossier home/
+    image = /home/nalon/.cache/current-wallpaper.jpg;  # Mettez votre image dans le dossier home/
 
     # Ou utiliser un schéma de couleurs prédéfini :
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
