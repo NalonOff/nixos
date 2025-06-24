@@ -10,6 +10,7 @@
     ./programs/mozilla.nix
     ./programs/stylix.nix
     ./programs/discord.nix
+    ./programs/hellwal.nix
     ];
 
   # User informations

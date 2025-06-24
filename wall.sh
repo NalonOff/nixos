@@ -20,4 +20,5 @@ cp "$selected" "$TARGET_FILE"
 
 echo "Wallpaper: $(basename "$selected")"
 
+swww img "$HOME/.cache/current-wallpaper.jpg"
 home-manager switch --flake .#nalon --impure

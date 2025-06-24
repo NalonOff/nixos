@@ -64,13 +64,13 @@
       };
       
       # Gestionnaires de fenêtres
-      hyprland.enable = true;
+      hyprland.enable = false;
       
       # Autres
       rofi.enable = true;
       dunst.enable = true;
       gtk.enable = true;
-      discord.enable = true;
+      nixcord.enable = true;
     };
 
     # Transparence
