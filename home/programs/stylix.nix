@@ -70,7 +70,7 @@
       rofi.enable = true;
       dunst.enable = true;
       gtk.enable = true;
-      discord.enable = true
+      discord.enable = true;
     };
 
     # Transparence
