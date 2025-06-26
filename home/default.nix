@@ -9,6 +9,7 @@
     ./programs/pfetch.nix
     ./programs/mozilla.nix
     ./programs/discord.nix
+    ./programs/spicetify.nix
   ];
 
   # User informations

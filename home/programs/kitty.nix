@@ -5,6 +5,9 @@
     enable = true;
 
     settings = {
+
+      opacity = 0.8;
+
       font_family = "FiraCode Nerd Font";
       bold_font = "FiraCode Nerd Font Bold";
       italic_font = "FiraCode Nerd Font Italic";
