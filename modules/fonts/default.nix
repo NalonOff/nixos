@@ -18,7 +18,6 @@
       font-awesome
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
-      #(nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     ];
     
     fontconfig = {
@@ -30,5 +29,15 @@
         emoji = [ "Noto Color Emoji" ];
       };
     };
+  };
+
+  environment.systemPackages = with pkgs; [
+    posy-cursors
+  ];
+
+  # Curseur par défaut pour le système
+  environment.variables = {
+    XCURSOR_THEME = "Posy_Cursor";
+    XCURSOR_SIZE = "24";
   };
 }

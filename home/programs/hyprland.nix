@@ -107,6 +107,7 @@
         "$mod, R, exec, rofi -show drun"
         # "$mod, P, pseudo,"
         # "$mod, J, togglesplit,"
+	"$mod, B, exec, sh /home/nalon/dotfiles/wall.sh"
 
         # Navigation entre les fenêtres
         "$mod, left, movefocus, l"

@@ -8,10 +8,8 @@
     ./programs/kitty.nix
     ./programs/pfetch.nix
     ./programs/mozilla.nix
-    ./programs/stylix.nix
     ./programs/discord.nix
-    ./programs/hellwal.nix
-    ];
+  ];
 
   # User informations
   home = {
