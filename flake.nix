@@ -9,15 +9,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    # Stylix with aligned inputs
-    stylix = {
-      url = "github:danth/stylix/release-25.05";
+    # Spicetify-nix for Spotify theming
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, spicetify-nix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,13 +34,13 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.nalon = import ./home;
-              # Pass Stylix to Home Manager
+              # Pass inputs to Home Manager
               extraSpecialArgs = {
                 inherit inputs;
               };
-              # Add Stylix module to Home Manager
+              # Add Spicetify module to Home Manager
               sharedModules = [
-                stylix.homeManagerModules.stylix
+                spicetify-nix.homeManagerModules.default
               ];
             };
           }
@@ -52,8 +51,8 @@
         inherit pkgs;
         modules = [
           ./home
-          # Add Stylix module
-          stylix.homeManagerModules.stylix
+          # Add Spicetify module
+          spicetify-nix.homeManagerModules.default
         ];
         extraSpecialArgs = {
           inherit inputs;
