@@ -1,34 +1,33 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+in
 {
-  # Installation de Spotify
-  home.packages = with pkgs; [
-    spotify
-  ];
+  #imports = [
+  #  inputs.spicetify-nix.homeManagerModules.default
+  #];
 
-  # Configuration complète de Spicetify
+  # Full configuration of Spicetify
   programs.spicetify = {
     enable = true;
-    
-    # Thème principal
-    theme = pkgs.spicetify-cli.themes.catppuccin-mocha;
-    
-    # Extensions populaires
-    enabledExtensions = with pkgs.spicetify-cli.extensions; [
-      adblock           # Bloque les pubs
-      hidePodcasts      # Cache la section podcasts
-      shuffle           # Améliore le shuffle
-      keyboardShortcut  # Raccourcis clavier personnalisés
-      fullAppDisplay    # Affichage plein écran amélioré
-      history           # Historique d'écoute
-      powerBar          # Barre de contrôle avancée
-      volumePercentage  # Affiche le pourcentage du volume
+
+    # Famous extensions
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock           # Block ads
+      hidePodcasts      # Hide podcast sectio
+      shuffle           # Better shuffle
+      keyboardShortcut  # Custom hotkeys
+      fullAppDisplay    # Better fullscreen
+      history           # Listing history
+      powerBar          # Advanced control bar
+      volumePercentage  # Show the volume percentage
     ];
     
-    # Applications personnalisées (optionnel)
-    enabledCustomApps = with pkgs.spicetify-cli.apps; [
-      lyrics-plus       # App paroles avancée
-      new-releases      # Nouvelles sorties
+    # Custom applications
+    enabledCustomApps = with spicePkgs.apps; [
+      lyricsPlus        # Advanced lyrics
+      newReleases       # New albums and others
     ];
   };
 }

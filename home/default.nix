@@ -10,7 +10,7 @@
     ./programs/mozilla.nix
     ./programs/discord.nix
     ./programs/waybar.nix
-    #./programs/spicetify.nix
+    ./programs/spicetify.nix
   ];
 
   # User informations
