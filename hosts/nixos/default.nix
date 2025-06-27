@@ -8,6 +8,7 @@
     ../../modules/users
     ../../modules/system
     ../../modules/fonts
+    ../../modules/ssh
   ]; 
 
   # Version du système
