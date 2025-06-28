@@ -22,7 +22,7 @@
   
   # User packages
   home.packages = with pkgs; [
-    # CLI tools
+   # CLI tools
     tree
     fd
     ripgrep

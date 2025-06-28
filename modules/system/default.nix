@@ -3,6 +3,8 @@
 {
   # Essentials system packages
   environment.systemPackages = with pkgs; [
+    home-manager
+    
     # Basic tools
     wget
     curl
