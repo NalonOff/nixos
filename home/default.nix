@@ -11,6 +11,7 @@
     ./programs/nixcord.nix
     ./programs/waybar.nix
     ./programs/spicetify.nix
+    ./programs/steam.nix  # Ajout de Steam
   ];
 
   # User informations

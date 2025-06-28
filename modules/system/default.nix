@@ -51,6 +51,16 @@
   programs = {
     zsh.enable = true;
     bash.completion.enable = true;
+    
+    # Steam configuration au niveau système
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+    
+    # GameMode pour les performances
+    gamemode.enable = true;
   };
 
   security.polkit.enable = true;
@@ -58,8 +68,10 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
+  # Configuration graphique avec support 32-bit pour Steam
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;  # Support 32-bit pour Steam
     extraPackages = with pkgs; [
       intel-media-driver
       vaapiIntel
@@ -67,6 +79,9 @@
       libvdpau-va-gl
     ];
   };
+
+  # Support Steam hardware (contrôleurs, etc.)
+  hardware.steam-hardware.enable = true;
 
   #systemd.user.startServices = true;
   #services.dbus.enable = true;
