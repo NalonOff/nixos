@@ -14,7 +14,7 @@
       search = {
         default = "ddg";
         engines = {
-          "DuckDuckGo" = {
+          "ddg" = {
             urls = [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
             icon = "https://duckduckgo.com/favicon.ico";
             definedAliases = [ "@ddg" ];
@@ -83,6 +83,10 @@
         # Performance
         "gfx.webrender.all" = true;
         "media.ffmpeg.vaapi.enabled" = true;
+
+	# Wayland/Hyprland integration
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.use-xdg-desktop-portal.mime-handler" = 1;
       };
 
       userChrome = ''

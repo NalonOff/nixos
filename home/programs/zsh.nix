@@ -25,7 +25,9 @@
     };
     
     # Prompt configuration
-    initExtra = ''eval "$(starship init zsh)" '';
-    initContent = "pfetch";
+    initContent = ''
+      pfetch
+      eval "$(starship init zsh)"
+    '';
    };
 }

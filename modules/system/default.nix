@@ -65,8 +65,22 @@
 
   security.polkit.enable = true;
   programs.dconf.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+  
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland  # Portal optimisé pour Hyprland
+      xdg-desktop-portal-gtk       # Fallback pour apps GTK
+    ];
+    config = {
+      common = {
+        default = ["hyprland" "gtk"];
+      };
+      hyprland = {
+        default = ["hyprland" "gtk"];
+      };
+    };
+  };
 
   # Configuration graphique avec support 32-bit pour Steam
   hardware.graphics = {

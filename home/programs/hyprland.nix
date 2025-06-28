@@ -3,6 +3,8 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.variables = ["DISPLAY" "WAYLAND_DISPLAY"];
+
     settings = {
       input = {
         kb_layout = "fr";
@@ -12,6 +14,9 @@
       env = [
         "XCURSOR_SIZE,24"
         "QT_QPA_PLATFORMTHEME,qt5ct"
+	"XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
       ];
 
       # Moniteurs

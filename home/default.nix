@@ -7,11 +7,11 @@
     ./programs/hyprland.nix
     ./programs/kitty.nix
     ./programs/pfetch.nix
-    ./programs/mozilla.nix
+    ./programs/firefox.nix
     ./programs/nixcord.nix
     ./programs/waybar.nix
     ./programs/spicetify.nix
-    ./programs/steam.nix  # Ajout de Steam
+    ./programs/steam.nix
   ];
 
   # User informations
