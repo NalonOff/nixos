@@ -33,7 +33,7 @@ Cette configuration offre un environnement de bureau moderne et minimaliste bas√
 
 ```bash
 # Cloner le repository
-git clone https://github.com/[votre-username]/dotfiles-nixos ~/.config/nixos
+git clone https://github.com/NalonOff/nixos ~/.config/dotfiles
 
 # Naviguer dans le dossier
 cd ~/.config/nixos
