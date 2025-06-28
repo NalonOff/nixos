@@ -9,8 +9,6 @@
     wget
     curl
     git
-    vim
-    nano
     btop
     tree
     unzip

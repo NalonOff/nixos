@@ -8,7 +8,7 @@
     ./programs/kitty.nix
     ./programs/pfetch.nix
     ./programs/mozilla.nix
-    ./programs/discord.nix
+    ./programs/nixcord.nix
     ./programs/waybar.nix
     ./programs/spicetify.nix
   ];
