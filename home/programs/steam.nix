@@ -8,7 +8,6 @@
     steamcmd
     
     # Outils gaming supplémentaires
-    gamemode
     mangohud
     
     # Support Proton/Wine
@@ -24,8 +23,5 @@
     # Variables pour les performances gaming
     __GL_THREADED_OPTIMIZATIONS = "1";
     __GL_SHADER_DISK_CACHE = "1";
-    
-    # GameMode
-    LD_PRELOAD = "${pkgs.gamemode}/lib/libgamemode.so.0";
   };
 }
