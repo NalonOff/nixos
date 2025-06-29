@@ -1,118 +1,110 @@
-# 🏠 Dotfiles NixOS
-
-> *Configuration personnelle pour un environnement NixOS moderne avec Hyprland*
+# 🏠 NixOS Dotfiles
+> *Personal configuration for a modern NixOS environment with Hyprland*
 
 ![NixOS](https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
 ![Hyprland](https://img.shields.io/badge/Hyprland-00D9FF?style=for-the-badge&logo=wayland&logoColor=black)
 ![Home Manager](https://img.shields.io/badge/Home_Manager-FD6C6C?style=for-the-badge)
 
-## ✨ Aperçu
+## ✨ Overview
+This configuration provides a modern and minimalist desktop environment based on:
+- **NixOS** for declarative system management
+- **Hyprland** as Wayland compositor
+- **Home Manager** for user configuration management
+- A modular and reproducible approach
 
-Cette configuration offre un environnement de bureau moderne et minimaliste basé sur :
-- **NixOS** pour la gestion système déclarative
-- **Hyprland** comme compositeur Wayland
-- **Home Manager** pour la gestion des configurations utilisateur
-- Une approche modulaire et reproductible
-
-### 🖥️ Environnement
-- **WM** : Hyprland (Wayland compositor)
-- **Terminal** : Kitty
-- **Shell** : Zsh
-- **Éditeur** : Neovim / VSCode
-- **Launcher** : Rofi
-- **Bar** : Waybar
-- **Notifications** : Dunst
+### 🖥️ Environment
+- **WM**: Hyprland (Wayland compositor)
+- **Terminal**: Kitty
+- **Shell**: Zsh
+- **Editor**: Neovim / VSCode
+- **Launcher**: Rofi
+- **Bar**: Waybar
+- **Notifications**: Dunst
 
 ## 🚀 Installation
 
-### Prérequis
-- NixOS installé
-- Flakes activés dans la configuration Nix
+### Prerequisites
+- NixOS installed
+- Flakes enabled in Nix configuration
 
-### Installation rapide
-
+### Quick installation
 ```bash
-# Cloner le repository
+# Clone the repository
 git clone https://github.com/NalonOff/nixos ~/.config/dotfiles
 
-# Naviguer dans le dossier
+# Navigate to the folder
 cd ~/.config/nixos
 
-# Appliquer la configuration système
+# Apply system configuration
 sudo nixos-rebuild switch --flake .#[hostname]
 
-# Appliquer la configuration Home Manager
+# Apply Home Manager configuration
 home-manager switch --flake .#[username]
 ```
 
-### Installation personnalisée
-
-1. **Adapter la configuration** :
+### Custom installation
+1. **Adapt the configuration**:
    ```bash
-   # Modifier les paramètres dans flake.nix
+   # Modify settings in flake.nix
    vim flake.nix
    ```
 
-2. **Configurer l'hostname** :
+2. **Configure hostname**:
    ```bash
-   # Vérifier votre hostname
+   # Check your hostname
    hostname
    
-   # Adapter dans la configuration si nécessaire
+   # Adapt in configuration if necessary
    ```
 
-3. **Première application** :
+3. **First application**:
    ```bash
    sudo nixos-rebuild switch --flake .
    ```
 
-### Ajouter des programmes
-Créez un nouveau fichier dans `home/programs/` :
+### Adding programs
+Create a new file in `home/programs/`:
 ```nix
 { config, pkgs, ... }: {
-  programs.monProgramme = {
+  programs.myProgram = {
     enable = true;
     # configuration...
   };
 }
 ```
 
-## 🔧 Commandes utiles
-
+## 🔧 Useful commands
 ```bash
-# Rebuilder le système
+# Rebuild the system
 sudo nixos-rebuild switch --flake .
 
-# Rebuilder Home Manager
+# Rebuild Home Manager
 home-manager switch --flake .
 
-# Mettre à jour les inputs
+# Update inputs
 nix flake update
 
-# Nettoyer les générations anciennes
+# Clean old generations
 sudo nix-collect-garbage -d
 
-# Optimiser le store Nix
+# Optimize Nix store
 sudo nix-store --optimise
 ```
 
 ## 📝 Notes
 
-### Sauvegarde
-Avant d'appliquer cette configuration :
+### Backup
+Before applying this configuration:
 ```bash
-# Sauvegarder la configuration actuelle
+# Backup current configuration
 sudo cp -r /etc/nixos /etc/nixos.backup
 ```
 
-### Résolution de problèmes
-- Vérifiez les logs : `journalctl -xeu nixos-rebuild`
-- Retour à la génération précédente : `sudo nixos-rebuild switch --rollback`
-- Problèmes Home Manager : `home-manager generations`
-
+### Troubleshooting
+- Check logs: `journalctl -xeu nixos-rebuild`
+- Rollback to previous generation: `sudo nixos-rebuild switch --rollback`
+- Home Manager issues: `home-manager generations`
 
 <div align="center">
-
-*Fait avec ❤️ et beaucoup de patience...*
-
+*Made with ❤️ and a lot of patience...*
 </div>
