@@ -21,7 +21,7 @@
 
       # Moniteurs
       monitor = [
-        ",preferred,auto,auto"
+        ",preferred,auto,1"
       ];
 
       # Applications au démarrage

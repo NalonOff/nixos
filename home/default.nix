@@ -61,10 +61,7 @@
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     OZONE_PLATFORM = "wayland";
 
-    # Qt / GTK scaling & Wayland support
-    GDK_SCALE = "1";
-    GDK_DPI_SCALE = "1";
-    GTK_USE_PORTAL = "1";
+    # Qt / GTK scaling & Wayland support 
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
