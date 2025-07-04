@@ -18,9 +18,14 @@
       url = "github:KaylorBen/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, spicetify-nix, nixcord, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, spicetify-nix, nixcord, nixvim, ... }:
     let
       system = "x86_64-linux";
       
@@ -28,12 +33,13 @@
       commonHomeModules = [
         spicetify-nix.homeManagerModules.default
         nixcord.homeModules.nixcord
+        nixvim.homeManagerModules.nixvim
       ];
       
       # Configuration commune pour extraSpecialArgs - passer tous les inputs
       commonExtraArgs = {
         inherit inputs;
-        inherit spicetify-nix nixcord;
+        inherit spicetify-nix nixcord nixvim;
       };
       
       # pkgs avec config commune

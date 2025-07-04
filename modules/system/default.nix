@@ -4,7 +4,7 @@
   # Essentials system packages
   environment.systemPackages = with pkgs; [
     home-manager
-    
+
     # Basic tools
     wget
     curl
@@ -13,25 +13,27 @@
     tree
     unzip
     zip
-    
+
+    gcc
+
     # Network tools
     networkmanager
-    
+
     # System tools
     pciutils
     usbutils
     lshw
     brightnessctl
-    
+
     # IDE
     neovim
   ];
-  
+
   # System environment variables
   environment.variables = {
     EDITOR = "neovim";
   };
-  
+
   # Essential services
   services = {
     # SSH (optionnel, décommentez si nécessaire)
@@ -39,33 +41,33 @@
     #   enable = true;
     #   settings.PasswordAuthentication = false;
     # };
-    
+
     # Cron
     cron.enable = true;
 
     # Bluetooth
     blueman.enable = true;
   };
-  
+
   # Default shell configuration
   programs = {
     zsh.enable = true;
     bash.completion.enable = true;
-    
+
     # Steam configuration au niveau système
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
-    
+
     # GameMode pour les performances
     gamemode.enable = true;
   };
 
   security.polkit.enable = true;
   programs.dconf.enable = true;
-  
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

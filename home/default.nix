@@ -12,6 +12,7 @@
     ./programs/waybar.nix
     ./programs/spicetify.nix
     ./programs/steam.nix
+    ./programs/nixvim.nix
   ];
 
   # User informations
