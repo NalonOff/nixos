@@ -98,7 +98,4 @@
 
   # Support Steam hardware (contrôleurs, etc.)
   hardware.steam-hardware.enable = true;
-
-  #systemd.user.startServices = true;
-  #services.dbus.enable = true;
 }
