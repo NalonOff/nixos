@@ -17,6 +17,10 @@
 	"XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
+        "LIBVA_DRIVER_NAME,iHD"
+        "MESA_LOADER_DRIVER_OVERRIDE,iris"
+        "WLR_NO_HARDWARE_CURSORS,1"
+        "WLR_RENDERER_ALLOW_SOFTWARE,1"
       ];
 
       # Moniteurs
@@ -46,7 +50,7 @@
       # Décoration
       decoration = {
         rounding = 10;
-        
+
         blur = {
           enabled = true;
           size = 3;
@@ -101,7 +105,7 @@
 
       # Raccourcis clavier
       "$mod" = "SUPER";
-      
+
       bind = [
         # Applications
         "$mod, RETURN, exec, kitty"
@@ -109,7 +113,7 @@
         "$mod, M, exit,"
         # "$mod, E, exec, thunar"
         "$mod, V, togglefloating,"
-        "$mod, R, exec, rofi -show drun"
+        "$mod, R, exec, rofi -show drun -show-icons"
         # "$mod, P, pseudo,"
         # "$mod, J, togglesplit,"
 	"$mod, B, exec, sh /home/nalon/dotfiles/wall.sh"
