@@ -59,6 +59,150 @@
 
     # Plugins essentiels
     plugins = {
+      # Dashboard/Page d'accueil
+      alpha = {
+        enable = true;
+        layout = [
+          {
+            type = "padding";
+            val = 12;
+          }
+          {
+            type = "text";
+            val = [
+              "                                                     "
+              "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗"
+              "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║"
+              "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║"
+              "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║"
+              "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║"
+              "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝"
+              "                                                     "
+            ];
+            opts = {
+              position = "center";
+              hl = "Type";
+            };
+          }
+          {
+            type = "padding";
+            val = 2;
+          }
+          {
+            type = "group";
+            val = [
+              {
+                type = "text";
+                val = "Quick links";
+                opts = {
+                  hl = "SpecialComment";
+                  position = "center";
+                };
+              }
+              {
+                type = "padding";
+                val = 1;
+              }
+              {
+                type = "group";
+                val = [
+                  {
+                    type = "button";
+                    val = "  Find file";
+                    on_press.__raw = "function() require('telescope.builtin').find_files() end";
+                    opts = {
+                      shortcut = "<leader>ff";
+                      position = "center";
+                      cursor = 3;
+                      width = 50;
+                      align_shortcut = "right";
+                      hl_shortcut = "Keyword";
+                    };
+                  }
+                  {
+                    type = "button";
+                    val = "  New file";
+                    on_press.__raw = "function() vim.cmd[[ene]] end";
+                    opts = {
+                      shortcut = "<leader>fn";
+                      position = "center";
+                      cursor = 3;
+                      width = 50;
+                      align_shortcut = "right";
+                      hl_shortcut = "Keyword";
+                    };
+                  }
+                  {
+                    type = "button";
+                    val = "  Recently used files";
+                    on_press.__raw = "function() require('telescope.builtin').oldfiles() end";
+                    opts = {
+                      shortcut = "<leader>fo";
+                      position = "center";
+                      cursor = 3;
+                      width = 50;
+                      align_shortcut = "right";
+                      hl_shortcut = "Keyword";
+                    };
+                  }
+                  {
+                    type = "button";
+                    val = "  Find text";
+                    on_press.__raw = "function() require('telescope.builtin').live_grep() end";
+                    opts = {
+                      shortcut = "<leader>fg";
+                      position = "center";
+                      cursor = 3;
+                      width = 50;
+                      align_shortcut = "right";
+                      hl_shortcut = "Keyword";
+                    };
+                  }
+                  {
+                    type = "button";
+                    val = "  Configuration";
+                    on_press.__raw = "function() vim.cmd[[e ~/.config/nixpkgs/nixvim.nix]] end";
+                    opts = {
+                      shortcut = "<leader>fc";
+                      position = "center";
+                      cursor = 3;
+                      width = 50;
+                      align_shortcut = "right";
+                      hl_shortcut = "Keyword";
+                    };
+                  }
+                  {
+                    type = "button";
+                    val = "  Quit Neovim";
+                    on_press.__raw = "function() vim.cmd[[qa]] end";
+                    opts = {
+                      shortcut = "<leader>q";
+                      position = "center";
+                      cursor = 3;
+                      width = 50;
+                      align_shortcut = "right";
+                      hl_shortcut = "Keyword";
+                    };
+                  }
+                ];
+              }
+            ];
+          }
+          {
+            type = "padding";
+            val = 2;
+          }
+          {
+            type = "text";
+            val = "🚀 Happy coding!";
+            opts = {
+              position = "center";
+              hl = "String";
+            };
+          }
+        ];
+      };
+
       # Explorateur de fichiers
       neo-tree = {
         enable = true;
@@ -109,9 +253,9 @@
             selection_strategy = "reset";
             sorting_strategy = "ascending";
             layout_strategy = "horizontal";
-            file_sorter = "require('telescope.sorters').get_fuzzy_file";
+            file_sorter.__raw = "require('telescope.sorters').get_fuzzy_file";
             file_ignore_patterns = [ "^.git/" "^node_modules/" "^target/" "^build/" ];
-            generic_sorter = "require('telescope.sorters').get_generic_fuzzy_sorter";
+            generic_sorter.__raw = "require('telescope.sorters').get_generic_fuzzy_sorter";
             path_display = [ "truncate" ];
             winblend = 0;
             border = {};
@@ -119,9 +263,9 @@
             color_devicons = true;
             use_less = true;
             set_env = { COLORTERM = "truecolor"; };
-            file_previewer = "require('telescope.previewers').vim_buffer_cat.new";
-            grep_previewer = "require('telescope.previewers').vim_buffer_vimgrep.new";
-            qflist_previewer = "require('telescope.previewers').vim_buffer_qflist.new";
+            file_previewer.__raw = "require('telescope.previewers').vim_buffer_cat.new";
+            grep_previewer.__raw = "require('telescope.previewers').vim_buffer_vimgrep.new";
+            qflist_previewer.__raw = "require('telescope.previewers').vim_buffer_qflist.new";
           };
         };
       };
@@ -229,7 +373,7 @@
       lsp = {
         enable = true;
         servers = {
-          nil_ls.enable = true;  # Nix
+          nil-ls.enable = true;  # Nix
           lua-ls.enable = true;  # Lua
           pyright.enable = true; # Python
           rust-analyzer.enable = true; # Rust
@@ -268,7 +412,7 @@
         enable = true;
         settings = {
           snippet = {
-            expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+            expand.__raw = "function(args) require('luasnip').lsp_expand(args.body) end";
           };
           mapping = {
             "<C-b>" = "cmp.mapping.scroll_docs(-4)";
@@ -276,8 +420,8 @@
             "<C-Space>" = "cmp.mapping.complete()";
             "<C-e>" = "cmp.mapping.abort()";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<Tab>" = "cmp.mapping(function(fallback) if cmp.visible() then cmp.select_next_item() elseif require('luasnip').expand_or_jumpable() then require('luasnip').expand_or_jump() else fallback() end end, { 'i', 's' })";
-            "<S-Tab>" = "cmp.mapping(function(fallback) if cmp.visible() then cmp.select_prev_item() elseif require('luasnip').jumpable(-1) then require('luasnip').jump(-1) else fallback() end end, { 'i', 's' })";
+            "<Tab>".__raw = "cmp.mapping(function(fallback) if cmp.visible() then cmp.select_next_item() elseif require('luasnip').expand_or_jumpable() then require('luasnip').expand_or_jump() else fallback() end end, { 'i', 's' })";
+            "<S-Tab>".__raw = "cmp.mapping(function(fallback) if cmp.visible() then cmp.select_prev_item() elseif require('luasnip').jumpable(-1) then require('luasnip').jump(-1) else fallback() end end, { 'i', 's' })";
           };
           sources = [
             { name = "nvim_lsp"; }
@@ -373,7 +517,7 @@
           fast_wrap = {
             map = "<M-e>";
             chars = [ "{" "[" "(" "\"" "'" ];
-            pattern = "string.gsub([[ [%'%\"%)%>%]%)%}%,] ]], ' ', '')";
+            pattern.__raw = "string.gsub([[ [%'%\"%)%>%]%)%}%,] ]], ' ', '')";
             offset = 0;
             end_key = "$";
             keys = "qwertyuiopzxcvbnmasdfghjkl";
@@ -603,6 +747,7 @@
       { mode = "n"; key = "<leader>w"; action = ":w<CR>"; options = { desc = "Save file"; }; }
       { mode = "n"; key = "<leader>q"; action = ":q<CR>"; options = { desc = "Quit"; }; }
       { mode = "n"; key = "<leader>Q"; action = ":qa<CR>"; options = { desc = "Quit all"; }; }
+      { mode = "n"; key = "<leader>fn"; action = ":enew<CR>"; options = { desc = "New file"; }; }
 
       # Explorateur de fichiers
       { mode = "n"; key = "<leader>e"; action = ":Neotree toggle<CR>"; options = { desc = "Toggle file explorer"; }; }
@@ -672,9 +817,7 @@
       {
         event = [ "TextYankPost" ];
         pattern = [ "*" ];
-        callback = {
-          __raw = "function() vim.highlight.on_yank() end";
-        };
+        callback.__raw = "function() vim.highlight.on_yank() end";
         desc = "Highlight yanked text";
       }
     ];
