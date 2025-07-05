@@ -194,7 +194,7 @@
           }
           {
             type = "text";
-            val = "🚀 Happy coding!";
+            val = "init.lua > you";
             opts = {
               position = "center";
               hl = "String";
