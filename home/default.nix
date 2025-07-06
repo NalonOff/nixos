@@ -13,6 +13,8 @@
     ./programs/spicetify.nix
     ./programs/steam.nix
     ./programs/nixvim.nix
+    ./programs/stylix.nix
+    #./programs/rofi.nix
   ];
 
   # User informations
@@ -34,11 +36,12 @@
     jq
 
     # Apps
-    rofi
     nautilus
+    rofi
 
     # Ricing
     starship
+    swww
 
     # Network tools
     wget
