@@ -38,8 +38,8 @@
       commonHomeModules = [
         spicetify-nix.homeManagerModules.default
         nixcord.homeModules.nixcord
-        nixvim.homeManagerModules.nixvim
-        stylix.homeManagerModules.stylix
+        nixvim.homeModules.nixvim
+        stylix.homeModules.stylix
       ];
 
       # Configuration commune pour extraSpecialArgs - passer tous les inputs
