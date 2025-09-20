@@ -10,6 +10,8 @@
     ../../modules/fonts
     ../../modules/ssh
     ../../modules/audio
+    ../../modules/graphics/amd.nix
+    #../../modules/graphics/nvidia.nix
   ];
 
   # Version du système
