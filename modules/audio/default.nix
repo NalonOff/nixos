@@ -1,71 +1,95 @@
-# audio.nix - Module de configuration audio pour NixOS/Hyprland
-{ config, pkgs, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  # PipeWire comme serveur audio (remplace PulseAudio)
+  # Completely disable PulseAudio to avoid conflicts
+  hardware.pulseaudio.enable = false;
+
+  # Security configuration for real-time audio
   security.rtkit.enable = true;
+
+  # PipeWire configuration
   services.pipewire = {
     enable = true;
+
+    # Enable compatibility layers
     alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
+    alsa.support32Bit = true;  # 32-bit support for certain applications
+    pulse.enable = true;       # PulseAudio compatibility layer
+    jack.enable = true;        # JACK support for professional audio
 
-    # Configuration WirePlumber (gestionnaire de sessions PipeWire)
+    # Advanced PipeWire configuration
+    extraConfig.pipewire."92-low-latency" = {
+      context.properties = {
+        default.clock.rate = 48000;
+        default.clock.quantum = 32;
+        default.clock.min-quantum = 32;
+        default.clock.max-quantum = 32;
+      };
+    };
+
+    # Configuration for WirePlumber (PipeWire session manager)
     wireplumber.enable = true;
+
+    # Specific configuration to avoid issues with Waybar
+    extraConfig.pipewire-pulse."92-pulse-config" = {
+      context.modules = [
+        {
+          name = "libpipewire-module-protocol-pulse";
+          args = {
+            pulse.min.req = "32/48000";
+            pulse.default.req = "32/48000";
+            pulse.max.req = "32/48000";
+            pulse.min.quantum = "32/48000";
+            pulse.max.quantum = "32/48000";
+            server.address = [ "unix:native" ];
+          };
+        }
+      ];
+      stream.properties = {
+        node.latency = "32/48000";
+        resample.quality = 1;
+      };
+    };
   };
 
-  # Désactiver PulseAudio (incompatible avec PipeWire)
-  services.pulseaudio.enable = false;
-
-  # Packages audio utiles
+  # Useful audio packages
   environment.systemPackages = with pkgs; [
-    # Contrôleurs audio
-    pavucontrol         # Interface graphique pour PulseAudio/PipeWire
-    alsa-utils          # Utilitaires ALSA (amixer, aplay, etc.)
+    # Audio control utilities
+    pavucontrol          # Graphical interface for audio control
+    pulsemixer           # Command-line audio mixer
+    pamixer              # Command-line volume control
 
-    # Codecs audio
-    playerctl          # Contrôle des lecteurs multimédia
+    # PipeWire utilities
+    pipewire             # The main audio server
+    wireplumber          # Session manager
+    helvum               # Graphical interface for PipeWire (optional)
+
+    # Audio codecs
+    pulseaudio           # For command-line tools (pactl, etc.)
   ];
 
-  # Configuration des services audio pour l'environnement utilisateur
-  services.pipewire.extraConfig.pipewire = {
-    "10-clock-rate" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 1024;
-        "default.clock.min-quantum" = 32;
-        "default.clock.max-quantum" = 2048;
-      };
-    };
+  # Environment variables to ensure compatibility
+  environment.sessionVariables = {
+    # Force the use of PulseAudio server via PipeWire
+    PULSE_SERVER = "unix:\${XDG_RUNTIME_DIR}/pulse/native";
   };
 
-  # Configuration pour une latence audio réduite
-  services.pipewire.extraConfig.pipewire-pulse = {
-    "92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 32;
-        "default.clock.min-quantum" = 32;
-        "default.clock.max-quantum" = 32;
-      };
-    };
+  # User services for PipeWire
+  systemd.user.services = {
+    pipewire-pulse.wantedBy = [ "default.target" ];
   };
 
-  # Configuration des permissions pour l'audio temps réel
-  security.pam.loginLimits = [
-    {
-      domain = "@audio";
-      type = "-";
-      item = "rtprio";
-      value = "99";
-    }
-    {
-      domain = "@audio";
-      type = "-";
-      item = "memlock";
-      value = "unlimited";
-    }
-  ];
+  # Note: The 'audio' group is generally no longer necessary with PipeWire
+  # Manually add your user to the audio group in your configuration.nix if needed:
+  # users.users.your-username.extraGroups = [ "audio" ];
+
+  # Kernel parameters for audio
+  boot.kernelModules = [ "snd-aloop" ];  # Module for virtual audio devices
+
+  # Udev configuration for audio permissions
+  services.udev.extraRules = ''
+    # Permissions for audio devices
+    SUBSYSTEM=="sound", GROUP="audio", MODE="0664"
+    KERNEL=="controlC[0-9]*", GROUP="audio", MODE="0664"
+  '';
 }
-
