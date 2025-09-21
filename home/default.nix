@@ -5,6 +5,7 @@
     ./programs/git.nix
     ./programs/zsh.nix
     ./programs/hyprland.nix
+    ./programs/hyprlock.nix
     ./programs/kitty.nix
     ./programs/pfetch.nix
     ./programs/firefox.nix
@@ -37,7 +38,6 @@
 
     # Apps
     nautilus
-    rofi
 
     # Ricing
     starship
