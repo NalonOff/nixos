@@ -30,6 +30,7 @@
 
       # Applications au démarrage
       exec-once = [
+        "hyprlock"
         # "waybar"
         # "hyprpaper"
         # "dunst"
