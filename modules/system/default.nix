@@ -24,6 +24,7 @@
     usbutils
     lshw
     brightnessctl
+    playerctl
 
     # IDE
     neovim
