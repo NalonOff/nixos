@@ -30,6 +30,7 @@
 
       # Applications au démarrage
       exec-once = [
+        "swww init"
         "hyprlock"
         # "waybar"
         # "hyprpaper"
@@ -88,6 +89,9 @@
       # Divers
       misc = {
         force_default_wallpaper = -1;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        background_color = lib.mkForce "0x000000";
       };
 
       # Règles pour les fenêtres
