@@ -33,7 +33,7 @@ active_player=$(get_playing_player)
 
 # If no player found
 if [ -z "$active_player" ]; then
-    echo "No music playing"
+    echo ""
     exit 0
 fi
 
