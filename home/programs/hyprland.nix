@@ -31,8 +31,8 @@
       # Applications au démarrage
       exec-once = [
         "swww init"
+        "waybar"
         "hyprlock"
-        # "waybar"
         # "hyprpaper"
         # "dunst"
         # "nm-applet --indicator"
