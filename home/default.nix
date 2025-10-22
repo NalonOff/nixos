@@ -16,6 +16,7 @@
     ./programs/nixvim.nix
     ./programs/stylix.nix
     #./programs/rofi.nix
+    ./programs/obs.nix
   ];
 
   # User informations
