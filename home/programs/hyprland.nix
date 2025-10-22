@@ -7,7 +7,7 @@
 
     settings = {
       input = {
-        kb_layout = "fr";
+        kb_layout = "us";
       };
 
       # Variables d'environnement
@@ -25,7 +25,7 @@
 
       # Moniteurs
       monitor = [
-        ",preferred,auto,1"
+        ",1920x1080@240,auto,1"
       ];
 
       # Applications au démarrage
@@ -33,11 +33,7 @@
         "swww init"
         "waybar"
         "hyprlock"
-        # "hyprpaper"
-        # "dunst"
-        # "nm-applet --indicator"
-        # "blueman-applet"
-      ];
+     ];
 
       # Variables générales
       general = {
