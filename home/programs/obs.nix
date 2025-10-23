@@ -5,7 +5,7 @@
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
-      wlrobs                    # Support Wayland/wlroots (essentiel pour Hyprland)
+      wlrobs                     # Support Wayland/wlroots (essentiel pour Hyprland)
       obs-pipewire-audio-capture # Capture audio via PipeWire
       obs-vaapi                  # Encodage matériel VAAPI
       obs-vkcapture              # Capture Vulkan
@@ -47,14 +47,5 @@
     RecFormat=mkv
     RecEncoder=obs_x264
     RecQuality=Stream
-  '';
-
-  # Configuration globale d'OBS
-  xdg.configFile."obs-studio/global.ini".text = ''
-    [General]
-    FirstRun=false
-
-    [Audio]
-    DisableAudioDucking=true
   '';
 }
