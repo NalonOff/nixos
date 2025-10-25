@@ -39,6 +39,7 @@
 
     # Apps
     nautilus
+    prismlauncher
 
     # Ricing
     starship
@@ -51,6 +52,7 @@
     # Basic dev
     nodejs
     python3
+    jdk21
 
     # Other tools
     pfetch
