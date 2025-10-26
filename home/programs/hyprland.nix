@@ -40,7 +40,6 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        # Couleurs gérées par Stylix - supprimées
         layout = "dwindle";
         allow_tearing = false;
       };
@@ -112,7 +111,7 @@
         "$mod, RETURN, exec, kitty"
         "$mod, A, killactive,"
         "$mod, M, exit,"
-        # "$mod, E, exec, thunar"
+        "$mod, E, exec, nautilus"
         "$mod, V, togglefloating,"
         "$mod, R, exec, rofi -show drun -show-icons"
         # "$mod, P, pseudo,"
