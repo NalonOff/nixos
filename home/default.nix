@@ -17,6 +17,7 @@
     ./programs/stylix.nix
     #./programs/rofi.nix
     ./programs/obs.nix
+    ./programs/vlc.nix
   ];
 
   # User informations
@@ -36,10 +37,12 @@
     eza
     fzf
     jq
+    ffmpeg-full
 
     # Apps
     nautilus
     prismlauncher
+    davinci-resolve
 
     # Ricing
     starship
