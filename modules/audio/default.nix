@@ -2,7 +2,7 @@
 
 {
   # Completely disable PulseAudio to avoid conflicts
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Security configuration for real-time audio
   security.rtkit.enable = true;

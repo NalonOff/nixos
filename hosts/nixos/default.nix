@@ -11,24 +11,24 @@
     ../../modules/fonts
     ../../modules/ssh
     ../../modules/audio
-    ../../modules/graphics/amd.nix
-    #../../modules/graphics/nvidia.nix
+    #../../modules/graphics/amd.nix
+    ../../modules/graphics/nvidia.nix
   ];
 
-  # Version du système
+  # System version
   system.stateVersion = "25.05";
 
-  # Nom d'hôte
+  # Host name
   networking.hostName = "nixos";
 
-  # Fuseau horaire
+  # Time zone
   time.timeZone = "Europe/Paris";
 
-  # Localisation
+  # Location
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "fr";
 
-  # Flakes et commande nix
+  # Flakes and nix commande
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -45,6 +45,6 @@
   boot.kernelParams = [ "rtw_8821ce.fwctrl_lps=0" "rtw_8821ce.swlps=0" ];
   hardware.enableAllFirmware = true;
 
-  # Logiciels propriétaires
+  # Proprietary apps
   nixpkgs.config.allowUnfree = true;
 }

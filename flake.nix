@@ -48,17 +48,16 @@
         inherit spicetify-nix nixcord nixvim stylix;
       };
 
-      # pkgs avec config commune
-      pkgs = nixpkgs.legacyPackages.${system}.extend (final: prev: {
-        config.allowUnfree = true;
-      });
-
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./hosts/nixos
           stylix.nixosModules.stylix
+          # Configuration allowUnfree au niveau système
+          {
+            nixpkgs.config.allowUnfree = true;
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -74,8 +73,14 @@
       };
 
       homeConfigurations.nalon = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home ] ++ commonHomeModules;
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          ./home
+          # Configuration allowUnfree pour la config Home Manager standalone
+          {
+            nixpkgs.config.allowUnfree = true;
+          }
+        ] ++ commonHomeModules;
         extraSpecialArgs = commonExtraArgs;
       };
     };

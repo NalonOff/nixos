@@ -257,15 +257,17 @@
       # Barre de statut
       lualine = {
         enable = true;
-        globalstatus = true;
-        theme = "tokyonight";
-        sections = {
-          lualine_a = ["mode"];
-          lualine_b = ["branch" "diff" "diagnostics"];
-          lualine_c = ["filename"];
-          lualine_x = ["encoding" "fileformat" "filetype"];
-          lualine_y = ["progress"];
-          lualine_z = ["location"];
+        settings = {
+          globalstatus = true;
+          theme = "tokyonight";
+          sections = {
+            lualine_a = ["mode"];
+            lualine_b = ["branch" "diff" "diagnostics"];
+            lualine_c = ["filename"];
+            lualine_x = ["encoding" "fileformat" "filetype"];
+            lualine_y = ["progress"];
+            lualine_z = ["location"];
+          };
         };
       };
 
@@ -353,15 +355,26 @@
         };
       };
 
+      # File icons
+      web-devicons = {
+        enable = true;
+        settings = {
+          color_icons = true;
+          default = true;
+        };
+      };
+
       # LSP
       lsp = {
         enable = true;
         servers = {
-          nil-ls.enable = true;  # Nix
-          lua-ls.enable = true;  # Lua
+          nil_ls.enable = true;  # Nix
+          lua_ls.enable = true;  # Lua
           pyright.enable = true; # Python
-          rust-analyzer.enable = true; # Rust
-          tsserver.enable = true; # TypeScript/JavaScript
+          rust_analyzer.enable = true; # Rust
+          rust_analyzer.installCargo = false;
+          rust_analyzer.installRustc = false;
+          ts_ls.enable = true; # TypeScript/JavaScript
           gopls.enable = true;   # Go
           clangd.enable = true;  # C/C++
           html.enable = true;    # HTML
@@ -573,11 +586,13 @@
       # Notifications
       notify = {
         enable = true;
-        backgroundColour = "#000000";
-        fps = 30;
-        render = "default";
-        timeout = 5000;
-        topDown = true;
+        settings = {
+          backgroundColour = "#000000";
+          fps = 30;
+          render = "default";
+          timeout = 5000;
+          topDown = true;
+        };
       };
 
       # Interface améliorée
