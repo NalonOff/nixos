@@ -1,5 +1,5 @@
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, settings, ... }:
 
 {
   stylix = {
@@ -7,7 +7,7 @@
 
     # Configuration du thème Everforest
     # Option 1: Utiliser le schéma Everforest depuis base16-schemes
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
 
     # Option 2: Configuration Everforest manuelle (décommentez pour utiliser à la place)
     # base16Scheme = {
@@ -30,8 +30,8 @@
     # };
 
     # Option 3: Utiliser une image comme base (décommentez pour utiliser)
-    # image = ./wallpapers/everforest-wallpaper.jpg;
-
+    image = settings.theme.wallpaperPath;
+    #image = settings.theme.wallpaper;
     # Configuration des polices
     fonts = {
       monospace = {
@@ -87,7 +87,10 @@
       neovim.enable = true;
 
       # Navigateurs
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        profileNames = [ "default" ];
+      };
 
       # Autres applications
       rofi.enable = true;
@@ -106,7 +109,7 @@
      };
 
     # Configuration avancée
-    polarity = "dark"; # "dark" ou "light"
+    polarity = settings.theme.polarity; # "dark" ou "light"
 
     # Personnalisation par application (exemples)
     # Override des couleurs spécifiques si nécessaire

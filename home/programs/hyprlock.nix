@@ -1,18 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, lib, settings,... }:
 
 {
   programs.hyprlock = {
     enable = true;
 
     settings = {
-      # Variables
-      "$CITY" = "Tarbes";
-      "$COUNTRY" = "FRANCE";
-      "$WALLPAPER_PATH" = "~/dotfiles/home/wallpapers/original/astronaut.png";
-
       # BACKGROUND
       background = lib.mkForce {
-        path = "$WALLPAPER_PATH";
+        path = settings.theme.wallpaperString;
         blur_passes = 3;
         contrast = 0.8916;
         brightness = 0.8172;
@@ -78,7 +73,7 @@
         # USER
         {
           monitor = "";
-          text = "$USER";
+          text = settings.user.username;
           color = "rgba(216, 222, 233, 0.7)";
           font_size = 20;
           font_family = "SF Pro Text Semibold";
@@ -116,7 +111,7 @@
       image = [
         {
           monitor = "";
-          path = "/home/nalon/dotfiles/home/wallpapers/original/astronaut.png";
+          path = settings.user.profilePicture;
           border_color = "0xffdddddd";
           border_size = 0;
           size = 110;

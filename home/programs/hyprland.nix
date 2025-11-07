@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, settings, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -7,7 +7,7 @@
 
     settings = {
       input = {
-        kb_layout = "us";
+        kb_layout = settings.system.keyboard;
       };
 
       # Variables d'environnement
@@ -111,6 +111,7 @@
         "$mod, RETURN, exec, kitty"
         "$mod, A, killactive,"
         "$mod, M, exit,"
+        "$mod, L, exec, hyprlock"
         "$mod, E, exec, nautilus"
         "$mod, V, togglefloating,"
         "$mod, R, exec, rofi -show drun -show-icons"

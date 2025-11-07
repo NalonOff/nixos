@@ -4,10 +4,6 @@ let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
-  #imports = [
-  #  inputs.spicetify-nix.homeManagerModules.default
-  #];
-
   # Full configuration of Spicetify
   programs.spicetify = {
     enable = true;
@@ -23,7 +19,7 @@ in
       powerBar          # Advanced control bar
       volumePercentage  # Show the volume percentage
     ];
-    
+
     # Custom applications
     enabledCustomApps = with spicePkgs.apps; [
       lyricsPlus        # Advanced lyrics

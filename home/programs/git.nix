@@ -1,13 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 
 {
   programs.git = {
     enable = true;
-    userName = "Nalon";
-    userEmail = "nalonoff@gmail.com";
-    
+    userName = settings.user.fullName;
+    userEmail = settings.user.email;
+
     extraConfig = {
-      core.editor = "vim";
+      core.editor = "neovim";
       init.defaultBranch = "main";
       pull.rebase = false;
       url = {
@@ -16,7 +16,7 @@
         };
       };
     };
-    
+
     aliases = {
       st = "status";
       co = "checkout";

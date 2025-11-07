@@ -1,19 +1,18 @@
-# programs/waybar.nix
 { config, pkgs, ... }:
 
 {
-  # Paquets nécessaires pour Waybar
+  # Packages for waybar
   home.packages = with pkgs; [
-    # Applications utilisées par Waybar
+    # Apps use by waybar
     swaynotificationcenter
     blueman
     pamixer
     pavucontrol
     networkmanagerapplet
-    playerctl  # Pour MPRIS
+    playerctl  # for MPRIS
  ];
 
-  # Configuration des services
+  # Services configuration
   services.swaync.enable = true;
 
   programs.waybar = {
@@ -45,7 +44,7 @@
         "custom/os_button" = {
           format = "<span font='18'> </span>";
           tooltip = false;
-          on-click = "${pkgs.rofi}/bin/rofi -show combi";
+          on-click = "${pkgs.rofi}/bin/rofi -show drun";
         };
 
         # Media
@@ -65,7 +64,7 @@
           };
           dynamic-order = ["title" "artist"];
           dynamic-separator = " - ";
-          dynamic-len = 40;
+          #dynamic-len = 40;
           tooltip-format = "{player}: {dynamic}";
           tooltip = true;
           on-click = "${pkgs.playerctl}/bin/playerctl play-pause";
@@ -74,7 +73,7 @@
           on-scroll-down = "${pkgs.playerctl}/bin/playerctl next";
         };
 
-        # Réseau
+        # Network
         network = {
           format-wifi = "{icon}";
           format-ethernet = "󰈀 ";
@@ -96,7 +95,7 @@
           on-click = "${pkgs.blueman}/bin/blueman-manager";
         };
 
-        # Batterie
+        # Battery
         battery = {
           states = {
             good = 95;
@@ -128,7 +127,7 @@
           on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
 
-        # Luminosite
+        # Brightness
         backlight = {
           device = "intel_backlight";
           format = "{icon}";
@@ -158,7 +157,7 @@
           escape = true;
         };
 
-        # Espaces de travail Hyprland
+        # Hyprland's workspaces
         "hyprland/workspaces" = {
           format = "{icon}";
           icon-size = 32;
@@ -174,7 +173,7 @@
           };
         };
 
-        # Barre des taches
+        # Taskbar
         "wlr/taskbar" = {
           format = "{icon} {title:.18}";
           icon-size = 18;
@@ -185,19 +184,19 @@
           on-click = "activate";
         };
 
-        # Zone de notification systÃ¨me
+        # System tray
         tray = {
           icon-size = 18;
           spacing = 8;
         };
 
-        # Horloge
+        # Clock
         clock = {
           format = " {:%R}";
           tooltip-format = " {:%d %B %Y}";
         };
 
-        # MÃ©moire
+        # Memory
         memory = {
           format = " {}%";
           format-alt = " {used}/{total} GiB";
@@ -211,7 +210,7 @@
           interval = 5;
         };
 
-        # Groupes
+        # Groups
         "group/hardware" = {
           orientation = "horizontal";
           modules = [ "memory" "cpu" ];

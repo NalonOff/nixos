@@ -34,7 +34,10 @@
     let
       system = "x86_64-linux";
 
-      # Configuration commune pour les modules Home Manager
+      # Import your settings from settings.nix
+      settings = import ./settings.nix;
+
+      # Common Home Manager modules
       commonHomeModules = [
         spicetify-nix.homeManagerModules.default
         nixcord.homeModules.nixcord
@@ -42,19 +45,23 @@
         stylix.homeModules.stylix
       ];
 
-      # Configuration commune pour extraSpecialArgs - passer tous les inputs
+      # Common extraSpecialArgs - pass all inputs AND settings
       commonExtraArgs = {
-        inherit inputs;
+        inherit inputs settings;
         inherit spicetify-nix nixcord nixvim stylix;
       };
 
     in {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${settings.system.hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
+
+        # Pass settings to NixOS modules
+        specialArgs = { inherit settings; };
+
         modules = [
           ./hosts/nixos
           stylix.nixosModules.stylix
-          # Configuration allowUnfree au niveau système
+          # Allow unfree packages at system level
           {
             nixpkgs.config.allowUnfree = true;
           }
@@ -64,7 +71,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.nalon = import ./home;
+              users.${settings.user.username} = import ./home;
               extraSpecialArgs = commonExtraArgs;
               sharedModules = commonHomeModules;
             };
@@ -72,11 +79,11 @@
         ];
       };
 
-      homeConfigurations.nalon = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${settings.user.username} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./home
-          # Configuration allowUnfree pour la config Home Manager standalone
+          # Allow unfree packages for standalone Home Manager config
           {
             nixpkgs.config.allowUnfree = true;
           }

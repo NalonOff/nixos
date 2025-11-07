@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, unstable, ... }:
+{ config, pkgs, inputs, settings, ... }:
 
 {
   imports = [
@@ -22,11 +22,11 @@
   networking.hostName = "nixos";
 
   # Time zone
-  time.timeZone = "Europe/Paris";
+  time.timeZone = settings.system.timezone;
 
   # Location
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "fr";
+  i18n.defaultLocale = settings.system.locale;
+  console.keyMap = settings.system.keyboard;
 
   # Flakes and nix commande
   nix = {

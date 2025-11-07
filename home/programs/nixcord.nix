@@ -1,16 +1,16 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # Configuration nixcord
+  # Nixcord configuration
   programs.nixcord = {
     enable = true;
-    discord.enable = true;    
+    discord.enable = true;
 
-    # Plugins de base qui existent vraiment
+    # Default plugins
     config.plugins = {
-      fakeNitro.enable = true;       # Emojis gratuits
-      messageLogger.enable = true;   # Voir les messages supprimés
-      imageZoom.enable = true;       # Zoom sur les images
-    }; 
+      fakeNitro.enable = true;       # Free emojis
+      messageLogger.enable = true;   # See deleted messages
+      imageZoom.enable = true;       # Zoom on images
+    };
   };
 }

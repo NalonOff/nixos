@@ -1,16 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  # Installation de VLC avec support complet
   home.packages = with pkgs; [
     vlc
   ];
 
-  # Configuration optionnelle : associations de fichiers
+  # Optional configuration
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      # Vidéos
+      # Videos
       "video/mp4" = "vlc.desktop";
       "video/x-matroska" = "vlc.desktop";
       "video/webm" = "vlc.desktop";
