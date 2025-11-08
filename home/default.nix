@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ../scripts
+
     ./programs/git.nix
     ./programs/zsh.nix
     ./programs/hyprland.nix

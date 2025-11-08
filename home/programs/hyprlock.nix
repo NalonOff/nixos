@@ -85,7 +85,7 @@
         # CURRENT SONG (SPOTIFY)
         {
           monitor = "";
-          text = "cmd[update:1000] echo \"$(sh ~/dotfiles/scripts/media-player.sh)\"";
+          text = "cmd[update:1000] echo \"$(sh ~/.scripts/media-player.sh)\"";
           color = "rgba(255, 255, 255, 0.7)";
           font_size = 18;
           font_family = "SF Pro Display Semibold";
@@ -97,7 +97,7 @@
         # WEATHERCAST & LOCATION
         {
           monitor = "";
-          text = "cmd[update:1000] echo \"$(sh ~/dotfiles/scripts/weather.sh)\"";
+          text = "cmd[update:1000] echo \"$(sh ~/.scripts/weather.sh)\"";
           color = "rgba(255, 255, 255, 0.7)";
           font_size = 18;
           font_family = "SF Pro Display Semibold";
@@ -111,7 +111,9 @@
       image = [
         {
           monitor = "";
-          path = settings.user.profilePicture;
+          #path = settings.theme.wallpaperString;
+          path = settings.theme.profilePicture;
+
           border_color = "0xffdddddd";
           border_size = 0;
           size = 110;

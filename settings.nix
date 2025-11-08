@@ -4,10 +4,8 @@
     username = "nalon";
     fullName = "Nalon";
     email = "nalonoff@gmail.com";
-    userCountry = "FRANCE"; # Upper case only
-    userCity = "Tarbes";
-
-    profilePicture = "./home/nalon.png";
+    country = "FRANCE"; # Upper case only
+    city = "Tarbes";
   };
 
   # System settings
@@ -20,10 +18,12 @@
 
   # Theme and appearance
   theme = let
-    wallpaperPath = ./home/wallpapers/original/kimono.png;
+    wallpaperPath = ./home/wallpapers/original/hatsune-miku-samurai-katana-sword-anime-girl-4k-wallpaper-uhdpaper.com-2065b.jpg;
   in {
     inherit wallpaperPath;
     wallpaperString = toString wallpaperPath;
     polarity = "dark";
+
+    profilePicture = "./home/pfp.png";
   };
 }
