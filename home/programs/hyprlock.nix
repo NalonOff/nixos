@@ -36,7 +36,7 @@
           font_color = "rgb(200, 200, 200)";
           fade_on_empty = true;
           font_family = "SF Pro Text Semibold";
-          placeholder_text = "<span foreground=\"#🔒 #ffffff99\">Enter Password</span>";
+          placeholder_text = "🔑 <span foreground=\"##ffffff99\">Enter Password</span>";
           hide_input = false;
           position = "0, -400";
           halign = "center";
