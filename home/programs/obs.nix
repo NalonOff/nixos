@@ -1,51 +1,33 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
+let
+  # Detect if NVIDIA is enabled at system level
+  hasNvidia = (osConfig.hardware.nvidia.package or null != null);
+in
 {
-  # Installation d'OBS Studio avec plugins pour Wayland/Hyprland
+  # OBS Studio installation with plugins for Wayland/Hyprland
   programs.obs-studio = {
     enable = true;
+    # CUDA support for NVENC hardware encoding (auto-detected)
+    package = if hasNvidia
+      then pkgs.obs-studio.override { cudaSupport = true; }
+      else pkgs.obs-studio;
+
     plugins = with pkgs.obs-studio-plugins; [
-      wlrobs                     # Support Wayland/wlroots (essentiel pour Hyprland)
-      obs-pipewire-audio-capture # Capture audio via PipeWire
-      obs-vaapi                  # Encodage matériel VAAPI
-      obs-vkcapture              # Capture Vulkan
-      obs-gstreamer              # Support GStreamer
-      input-overlay              # Affichage des touches/souris
+      wlrobs                     # Wayland/wlroots support (essential for Hyprland)
+      obs-pipewire-audio-capture # Audio capture via PipeWire
+      obs-vaapi                  # VAAPI hardware encoding (AMD/Intel fallback)
+      obs-vkcapture              # Vulkan capture
+      obs-gstreamer              # GStreamer support
+      input-overlay              # Keyboard/mouse display
     ];
   };
 
-  # Variables d'environnement pour Wayland
+  # Environment variables for Wayland
   home.sessionVariables = {
-    # Force OBS à utiliser Wayland
+    # Force OBS to use Wayland
     QT_QPA_PLATFORM = "wayland";
-    # Meilleure compatibilité avec Hyprland
+    # Better compatibility with Hyprland
     OBS_USE_EGL = "1";
   };
-
-  # Configuration de base pour les profils
-  xdg.configFile."obs-studio/basic/profiles/Hyprland/basic.ini".text = ''
-    [General]
-    Name=Hyprland
-
-    [Video]
-    BaseCX=1920
-    BaseCY=1080
-    OutputCX=1920
-    OutputCY=1080
-    FPSType=0
-    FPSCommon=60
-
-    [Audio]
-    SampleRate=48000
-    ChannelSetup=Stereo
-
-    [Output]
-    Mode=Advanced
-
-    [AdvOut]
-    RecType=Standard
-    RecFormat=mkv
-    RecEncoder=obs_x264
-    RecQuality=Stream
-  '';
 }
