@@ -14,7 +14,7 @@
         if [[ -n "$artist" && -n "$title" ]]; then
           echo "$artist - $title"
         else
-          echo "No music playing"
+          echo ""
         fi
       else
         echo ""
