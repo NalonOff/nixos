@@ -17,7 +17,7 @@
     ./programs/steam.nix
     ./programs/nixvim.nix
     ./programs/stylix.nix
-    #./programs/rofi.nix
+    ./programs/rofi.nix
     ./programs/obs.nix
     ./programs/vlc.nix
   ];
@@ -45,6 +45,7 @@
     nautilus
     prismlauncher
     davinci-resolve
+    gimp
 
     # Ricing
     starship
