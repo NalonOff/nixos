@@ -21,7 +21,7 @@
 
       # Check if request succeeded
       if [[ $? -ne 0 || -z "$weather_info" ]]; then
-          echo "Error: Unable to fetch weather for $CITY"
+          echo ""
           exit 1
       fi
 
