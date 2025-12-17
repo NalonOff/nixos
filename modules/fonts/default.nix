@@ -6,20 +6,20 @@
       # Basic fonts
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       liberation_ttf
-      
+
       # Dev fonts
       fira-code
       fira-code-symbols
       jetbrains-mono
-      
+
       # Icon fonts
       font-awesome
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
     ];
-    
+
     fontconfig = {
       enable = true;
       defaultFonts = {

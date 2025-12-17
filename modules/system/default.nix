@@ -91,8 +91,8 @@
     enable32Bit = true;  # Support 32-bit pour Steam
     extraPackages = with pkgs; [
       intel-media-driver
-      vaapiIntel
-      vaapiVdpau
+      intel-vaapi-driver
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };

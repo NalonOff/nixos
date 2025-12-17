@@ -63,7 +63,7 @@
     # Other tools
     pfetch
     btop
-    du-dust
+    dust
   ];
 
   # Environment variables

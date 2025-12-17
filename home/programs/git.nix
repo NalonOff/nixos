@@ -1,7 +1,7 @@
 { config, pkgs, settings, ... }:
 
 {
-  programs.git = {
+  programs.git.settings = {
     enable = true;
     userName = settings.user.fullName;
     userEmail = settings.user.email;

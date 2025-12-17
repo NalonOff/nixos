@@ -76,11 +76,6 @@
         preserve_split = true;
       };
 
-      # Gestes
-      gestures = {
-        workspace_swipe = false;
-      };
-
       # Divers
       misc = {
         force_default_wallpaper = -1;

@@ -5,7 +5,7 @@
   users.users.nalon = {
     isNormalUser = true;
     description = "Main user";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
     shell = pkgs.zsh;
   };
 

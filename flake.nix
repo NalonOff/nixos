@@ -20,12 +20,12 @@
     };
 
     nixvim = {
-      url = "github:jfredett/nixvim";
+      url = "github:NalonOff/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
-      url = "github:danth/stylix/release-25.05";
+      url = "github:danth/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -33,11 +33,8 @@
   outputs = inputs@{ nixpkgs, home-manager, spicetify-nix, nixcord, nixvim, stylix, ... }:
     let
       system = "x86_64-linux";
-
-      # Import your settings from settings.nix
       settings = import ./settings.nix;
 
-      # Common Home Manager modules
       commonHomeModules = [
         spicetify-nix.homeManagerModules.default
         nixcord.homeModules.nixcord
@@ -45,26 +42,19 @@
         stylix.homeModules.stylix
       ];
 
-      # Common extraSpecialArgs - pass all inputs AND settings
       commonExtraArgs = {
         inherit inputs settings;
         inherit spicetify-nix nixcord nixvim stylix;
       };
-
     in {
       nixosConfigurations.${settings.system.hostname} = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        # Pass settings to NixOS modules
+        system = system;
         specialArgs = { inherit settings; };
 
         modules = [
           ./hosts/nixos
           stylix.nixosModules.stylix
-          # Allow unfree packages at system level
-          {
-            nixpkgs.config.allowUnfree = true;
-          }
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -80,15 +70,12 @@
       };
 
       homeConfigurations.${settings.user.username} = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        system = system;
         modules = [
           ./home
-          # Allow unfree packages for standalone Home Manager config
-          {
-            nixpkgs.config.allowUnfree = true;
-          }
         ] ++ commonHomeModules;
         extraSpecialArgs = commonExtraArgs;
       };
     };
 }
+

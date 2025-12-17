@@ -13,6 +13,7 @@
     ../../modules/audio
     #../../modules/graphics/amd.nix
     ../../modules/graphics/nvidia.nix
+    ../../modules/docker
   ];
 
   # System version
@@ -45,6 +46,5 @@
   boot.kernelParams = [ "rtw_8821ce.fwctrl_lps=0" "rtw_8821ce.swlps=0" ];
   hardware.enableAllFirmware = true;
 
-  # Proprietary apps
   nixpkgs.config.allowUnfree = true;
 }
