@@ -3,7 +3,7 @@
   user = {
     username = "nalon";
     fullName = "Nalon";
-    email = "nalonoff@gmail.com";
+    email = "nalonof@gmail.com";
     country = "FRANCE"; # Upper case only
     city = "Tarbes";
   };
@@ -18,12 +18,13 @@
 
   # Theme and appearance
   theme = let
-    wallpaperPath = ./home/wallpapers/original/hatsune-miku-samurai-katana-sword-anime-girl-4k-wallpaper-uhdpaper.com-2065b.jpg;
+    wallpaperPath = ./home/wallpapers/original/rem.png;
+    profilePicturePath = ./home/pfp.png;
   in {
     inherit wallpaperPath;
     wallpaperString = toString wallpaperPath;
     polarity = "dark";
 
-    profilePicture = "./home/pfp.png";
+    profilePictureString = toString profilePicturePath;
   };
 }

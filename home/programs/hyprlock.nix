@@ -111,13 +111,11 @@
       image = [
         {
           monitor = "";
-          #path = settings.theme.wallpaperString;
-          path = settings.theme.profilePicture;
-
+          path = settings.theme.profilePictureString;
           border_color = "0xffdddddd";
           border_size = 0;
           size = 110;
-          rounding = 55;
+          rounding = -1;
           rotate = 0;
           reload_time = -1;
           reload_cmd = "";
