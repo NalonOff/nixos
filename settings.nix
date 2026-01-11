@@ -18,7 +18,7 @@
 
   # Theme and appearance
   theme = let
-    wallpaperPath = ./home/wallpapers/original/rem.png;
+    wallpaperPath = ./home/wallpapers/original/teto.jpg;
     profilePicturePath = ./home/pfp.png;
   in {
     inherit wallpaperPath;
