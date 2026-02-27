@@ -40,12 +40,15 @@
     fzf
     jq
     ffmpeg-full
+    love
 
     # Apps
     nautilus
     prismlauncher
     davinci-resolve
+    kdePackages.kdenlive
     gimp
+    r2modman
 
     # Ricing
     starship
