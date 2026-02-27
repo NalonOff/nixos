@@ -13,7 +13,6 @@
     ../../modules/audio
     #../../modules/graphics/amd.nix
     ../../modules/graphics/nvidia.nix
-    ../../modules/docker
   ];
 
   # System version
