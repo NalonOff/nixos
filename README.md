@@ -79,6 +79,30 @@ home-manager switch --flake .#nalon
 
 ## 🔧 Configuration Management
 
+### ⚙️ settings.nix
+
+`settings.nix` is the central configuration file of this repo. It centralizes all personal and system-specific values in one place, so you only need to edit this file when adapting the config to a new machine or user — no need to hunt through every module.
+
+#### Structure
+
+**`user`** — Personal information
+- `username` : your Unix username
+- `fullName` : your display name
+- `email` : your email address
+- `country` : your country in uppercase (e.g. `"FRANCE"`)
+- `city` : your city
+
+**`system`** — Machine settings
+- `hostname` : name of the machine
+- `timezone` : timezone (e.g. `"Europe/Paris"`)
+- `locale` : system locale (e.g. `"en_US.UTF-8"`)
+- `keyboard` : keyboard layout (e.g. `"us"`)
+
+**`theme`** — Appearance
+- `wallpaperPath` / `wallpaperString` : path to the wallpaper image
+- `profilePictureString` : path to the profile picture
+- `polarity` : color scheme polarity (`"dark"` or `"light"`)
+
 ### Adding a New System
 
 1. **Create system configuration**:
@@ -213,19 +237,23 @@ Create a new file in `home/programs/`:
 
 Then import it in the relevant user configuration.
 
+### Usage
+
+When setting up this config for the first time, start by editing `settings.nix` with your own values before running any rebuild.
+
 ## 🛠️ Useful Commands
 
 ```bash
 # System management
-sudo nixos-rebuild switch --flake .#[hostname]  # Apply system config
-sudo nixos-rebuild switch --flake .             # Use default hostname
+rbs [hostname]                                  # Apply system config
+rbs                                             # Use default hostname
 
 # Home Manager
 home-manager switch --flake .#[username]        # Apply user config
 home-manager generations                        # List generations
 
 # Maintenance
-nix flake update                                # Update inputs
+update [hostname]                               # Update inputs
 sudo nix-collect-garbage -d                     # Clean old generations
 sudo nix-store --optimise                       # Optimize store
 nix-store --gc                                  # Garbage collect
