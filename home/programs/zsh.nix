@@ -22,6 +22,8 @@
       # NixOS specificatons
       update = ''f() { cd "$HOME/dotfiles" && nix flake update && sudo nixos-rebuild switch --flake ".#$1"; }; f'';
       rbs = ''f() { sudo nixos-rebuild switch --flake "$HOME/dotfiles/.#$1"; }; f'';
+
+      reset audio = "rm -rf ~/.local/state/wireplumber/* && systemctl --user restart wireplumber";
     };
 
     # Prompt configuration
